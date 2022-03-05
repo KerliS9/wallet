@@ -18,7 +18,7 @@ export const GET_DATA = 'GET_DATA';
 export const FAILED_REQUEST = 'FAILED_REQUEST';
 
 export const requestAPI = (name) => ({ type: REQUEST_API, name });
-export const getData = (code) => ({ type: GET_DATA, code });
+export const getCurrencies = (code) => ({ type: GET_DATA, code });
 export const failedRequest = (error) => ({ type: FAILED_REQUEST, error });
 
 export function codeThunk(name) {
@@ -26,7 +26,7 @@ export function codeThunk(name) {
     dispacth(requestAPI(name));
     console.log('apithunk', name);
     return searchAPI(name)
-      .then((code) => dispacth(getData(code)))
+      .then((code) => dispacth(getCurrencies(code)))
       .catch((error) => dispacth(failedRequest(error)));
   };
 }

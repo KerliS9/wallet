@@ -1,8 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Header from '../components/Header';
 import FormExpenses from '../components/FormExpenses';
 import searchAPI from '../actions/requestAPI';
-// import { connect } from 'react-redux';
+import { getCurrencies } from '../actions';
 
 class Wallet extends React.Component {
   state = {
@@ -27,4 +28,8 @@ class Wallet extends React.Component {
   }
 }
 
-export default Wallet;
+const mapDispatchToProps = (dispacth) => ({
+  coin: (state) => dispacth(getCurrencies(state)),
+});
+
+export default connect(null, mapDispatchToProps)(Wallet);
