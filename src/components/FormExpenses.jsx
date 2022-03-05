@@ -9,6 +9,7 @@ class FormExpenses extends React.Component {
   } */
 
   render() {
+    // const { currencies } = this.props;
     return (
       <div className="form-expenses">
         <label htmlFor="expense">
