@@ -30,7 +30,7 @@ class FormExpenses extends React.Component {
           Moeda:
           <select id="coin" name="" type="select" data-testid="currency-input">
             {currencies.map((currency) => (
-              <option key={ currency } data-testid={ currency } value="currency">
+              <option key={ currency } data-testid={ currency } value={ currency }>
                 { currency }
               </option>))}
           </select>
@@ -46,11 +46,11 @@ class FormExpenses extends React.Component {
         <label htmlFor="cr">
           Tag:
           <select id="cr" name="" type="select" data-testid="tag-input">
-            <option>Alimentação</option>
-            <option>Lazer</option>
-            <option>Trabalho</option>
-            <option>Transporte</option>
-            <option>Saúde</option>
+            <option value="alimentação">Alimentação</option>
+            <option value="lazer">Lazer</option>
+            <option value="trabalho">Trabalho</option>
+            <option value="transporte">Transporte</option>
+            <option value="saúde">Saúde</option>
           </select>
         </label>
         <label htmlFor="description">
