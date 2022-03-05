@@ -1,11 +1,15 @@
 import React from 'react';
 import Header from '../components/Header';
+import FormExpenses from '../components/FormExpenses';
 // import { connect } from 'react-redux';
 
 class Wallet extends React.Component {
   render() {
     return (
-      <Header />
+      <div>
+        <Header />
+        <FormExpenses />
+      </div>
     );
   }
 }
