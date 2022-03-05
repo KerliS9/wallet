@@ -1,5 +1,6 @@
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
-import { ADD_COST, REMOVE_COST, EDIT_COST, GET_DATA } from '../actions/index';
+// import { ADD_COST, REMOVE_COST, GET_DATA } from '../actions/index';
+/* import { GET_DATA } from '../actions/index';
 
 const INITIAL_STATE = {
   currencies: [],
@@ -22,4 +23,4 @@ function wallet(state = INITIAL_STATE, action) {
   }
 }
 
-export default wallet;
+export default wallet; */

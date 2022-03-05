@@ -2,29 +2,16 @@ import React from 'react';
 // import { connect } from 'react-redux';
 import Header from '../components/Header';
 import FormExpenses from '../components/FormExpenses';
-import searchAPI from '../actions/requestAPI';
 // import { getCurrencies } from '../actions';
-import { getCurrenciesThunk } from '../actions';
+// import { getCurrenciesThunk } from '../actions';
 
 class Wallet extends React.Component {
-/*   state = {
-    currencies: [],
+/*  componentDidMount = async () => {
+    // const test1 = await getCurrenciesThunk();
+    // console.log('thunk', test1);
   } */
 
-  /*  componentDidMount = async () => {
-    const currencies = await searchAPI();
-    this.setState({
-      currencies,
-    });
-  } */ // chamar a função thunk dentro do didMount
-
-  componentDidMount() {
-    getCurrenciesThunk();
-    searchAPI();
-  }
-
   render() {
-    // const { currencies } = this.state;
     return (
       <div>
         <Header />

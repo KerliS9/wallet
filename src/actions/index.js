@@ -17,15 +17,16 @@ export const GET_DATA = 'GET_DATA';
 export const FAILED_REQUEST = 'FAILED_REQUEST';
 
 export const requestAPI = () => ({ type: REQUEST_API });
-export const setCurrencies = (code) => ({ type: GET_DATA, code });
+export const currenciesAction = (code) => ({ type: GET_DATA, code });
 export const failedRequest = (error) => ({ type: FAILED_REQUEST, error });
 
-export function getCurrenciesThunk() {
-  return (dispacth) => {
-    dispacth(requestAPI());
-    console.log('apithunk');
-    return searchAPI()
-      .then((code) => dispacth(setCurrencies(code)))
-      .catch((error) => dispacth(failedRequest(error)));
-  };
-}
+export const getCurrenciesThunk = () => async (dispacth) => {
+  dispacth(requestAPI());
+  try {
+    const currencies = await searchAPI();
+    console.log(currencies);
+    return dispacth(currenciesAction(currencies));
+  } catch (error) {
+    return dispacth(failedRequest(error));
+  }
+};

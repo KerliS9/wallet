@@ -1,13 +1,25 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+// import { connect } from 'react-redux';
+// import PropTypes from 'prop-types';
 import Button from './Button';
 import './FormExpenses.css';
+import searchAPI from '../actions/requestAPI';
 
 class FormExpenses extends React.Component {
+  state = {
+    currencies: [],
+  }
+
+  componentDidMount = async () => {
+    const currencies = await searchAPI();
+    this.setState({
+      currencies,
+    });
+  }
+
   render() {
-    const { currencies } = this.props;
-    console.log(currencies); // não está retornando as moedas, erro no thunk ou actions
+    const { currencies } = this.state;
+    // console.log(currencies);
     return (
       <div className="form-expenses">
         <label htmlFor="expense">
@@ -16,7 +28,7 @@ class FormExpenses extends React.Component {
         </label>
         <label htmlFor="coin">
           Moeda:
-          <select id="coin" name="" type="select" data-testid="currency-input" value="">
+          <select id="coin" name="" type="select" data-testid="currency-input">
             {currencies.map((currency) => (
               <option key={ currency } data-testid={ currency } value="currency">
                 { currency }
@@ -25,7 +37,7 @@ class FormExpenses extends React.Component {
         </label>
         <label htmlFor="payment">
           Método de pagamento:
-          <select id="payment" name="" type="select" data-testid="method-input" value="">
+          <select id="payment" name="" type="select" data-testid="method-input">
             <option value="dinheiro">Dinheiro</option>
             <option value="cartão de crédito">Cartão de crédito</option>
             <option value="cartão de débito">Cartão de débito</option>
@@ -33,7 +45,7 @@ class FormExpenses extends React.Component {
         </label>
         <label htmlFor="cr">
           Tag:
-          <select id="cr" name="" type="select" data-testid="tag-input" value="">
+          <select id="cr" name="" type="select" data-testid="tag-input">
             <option>Alimentação</option>
             <option>Lazer</option>
             <option>Trabalho</option>
@@ -51,12 +63,12 @@ class FormExpenses extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+/* const mapStateToProps = (state) => ({
   currencies: state.wallet.currencies,
-});
+}); */
 
-FormExpenses.propTypes = {
+/* FormExpenses.propTypes = {
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
+}; */
 
-export default connect(mapStateToProps)(FormExpenses);
+export default FormExpenses;
