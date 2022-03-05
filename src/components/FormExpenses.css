@@ -1,0 +1,7 @@
+.form-expenses {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 10px;
+}
