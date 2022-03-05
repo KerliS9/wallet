@@ -1,35 +1,41 @@
 import React from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import Header from '../components/Header';
 import FormExpenses from '../components/FormExpenses';
 import searchAPI from '../actions/requestAPI';
-import { getCurrencies } from '../actions';
+// import { getCurrencies } from '../actions';
+import { getCurrenciesThunk } from '../actions';
 
 class Wallet extends React.Component {
-  state = {
+/*   state = {
     currencies: [],
-  }
+  } */
 
-  componentDidMount = async () => {
+  /*  componentDidMount = async () => {
     const currencies = await searchAPI();
     this.setState({
       currencies,
     });
+  } */ // chamar a função thunk dentro do didMount
+
+  componentDidMount() {
+    getCurrenciesThunk();
+    searchAPI();
   }
 
   render() {
-    const { currencies } = this.state;
+    // const { currencies } = this.state;
     return (
       <div>
         <Header />
-        <FormExpenses currencies={ currencies } />
+        <FormExpenses />
       </div>
     );
   }
 }
 
-const mapDispatchToProps = (dispacth) => ({
-  coin: (state) => dispacth(getCurrencies(state)),
-});
+/* const mapDispatchToProps = (dispacth) => ({
+  currencies: (state) => dispacth(getCurrencies(state)),
+}); */
 
-export default connect(null, mapDispatchToProps)(Wallet);
+export default Wallet;

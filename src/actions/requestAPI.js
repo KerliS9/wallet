@@ -4,7 +4,7 @@ const searchAPI = async () => {
   const request = await fetch(API_URL);
   const requestJson = await request.json();
   delete requestJson.USDT;
-  // console.log(Object.keys(requestJson));
+  console.log(Object.keys(requestJson));
   return Object.keys(requestJson);
 };
 

@@ -8,25 +8,24 @@ export const EDIT_COST = 'EDIT_COST';
 
 export const userLogin = (userData) => ({ type: 'LOGIN', payload: userData });
 
-/* export const addCost = (value) => ({ type: 'ADD_COST', payload: value });
+export const addCost = (value) => ({ type: 'ADD_COST', payload: value });
 export const removeCost = (value) => ({ type: 'REMOVE_COST', payload: value });
 export const editCost = (value) => ({ type: 'EDIT_COST', payload: value });
- */
 
 export const REQUEST_API = 'REQUEST_API';
 export const GET_DATA = 'GET_DATA';
 export const FAILED_REQUEST = 'FAILED_REQUEST';
 
-export const requestAPI = (name) => ({ type: REQUEST_API, name });
-export const getCurrencies = (code) => ({ type: GET_DATA, code });
+export const requestAPI = () => ({ type: REQUEST_API });
+export const setCurrencies = (code) => ({ type: GET_DATA, code });
 export const failedRequest = (error) => ({ type: FAILED_REQUEST, error });
 
-export function codeThunk(name) {
+export function getCurrenciesThunk() {
   return (dispacth) => {
-    dispacth(requestAPI(name));
-    console.log('apithunk', name);
-    return searchAPI(name)
-      .then((code) => dispacth(getCurrencies(code)))
+    dispacth(requestAPI());
+    console.log('apithunk');
+    return searchAPI()
+      .then((code) => dispacth(setCurrencies(code)))
       .catch((error) => dispacth(failedRequest(error)));
   };
 }

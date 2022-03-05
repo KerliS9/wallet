@@ -1,15 +1,13 @@
 import React from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Button from './Button';
 import './FormExpenses.css';
 
 class FormExpenses extends React.Component {
-/*   state = {
-    expenses: [],
-  } */
-
   render() {
-    // const { currencies } = this.props;
+    const { currencies } = this.props;
+    console.log(currencies); // não está retornando as moedas, erro no thunk ou actions
     return (
       <div className="form-expenses">
         <label htmlFor="expense">
@@ -19,7 +17,10 @@ class FormExpenses extends React.Component {
         <label htmlFor="coin">
           Moeda:
           <select id="coin" name="" type="select" data-testid="currency-input" value="">
-            <option> </option>
+            {currencies.map((currency) => (
+              <option key={ currency } data-testid={ currency } value="currency">
+                { currency }
+              </option>))}
           </select>
         </label>
         <label htmlFor="payment">
@@ -50,4 +51,12 @@ class FormExpenses extends React.Component {
   }
 }
 
-export default FormExpenses;
+const mapStateToProps = (state) => ({
+  currencies: state.wallet.currencies,
+});
+
+FormExpenses.propTypes = {
+  currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+export default connect(mapStateToProps)(FormExpenses);
