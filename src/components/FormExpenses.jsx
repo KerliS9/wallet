@@ -4,6 +4,7 @@ import React from 'react';
 import Button from './Button';
 import './FormExpenses.css';
 import searchAPI from '../actions/requestAPI';
+import { expenseControlThunk } from '../actions';
 
 class FormExpenses extends React.Component {
   state = {
@@ -11,11 +12,19 @@ class FormExpenses extends React.Component {
   }
 
   componentDidMount = async () => {
-    const currencies = await searchAPI();
+    const api = await searchAPI();
+    const currencies = Object.keys(api);
+    // console.log(currencies);
     this.setState({
       currencies,
     });
   }
+
+  handleCost = () => {
+    expenseControlThunk();
+  }
+  // acessar a chave ask do moeda selecionada
+  // somar todos os valores adicionados com reduce
 
   render() {
     const { currencies } = this.state;
@@ -57,7 +66,7 @@ class FormExpenses extends React.Component {
           Descrição:
           <input id="description" type="text" data-testid="description-input" />
         </label>
-        <Button />
+        <Button onClick={ this.handleCost } />
       </div>
     );
   }
