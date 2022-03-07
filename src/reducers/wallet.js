@@ -17,11 +17,12 @@ function wallet(state = INITIAL_STATE, action) {
   case FAILED_REQUEST:
     return { ...state, loading: false };
   case ADD_COST:
-    return { ...state, expenses: action.payload };
+    return { ...state, expenses: [...state.expenses, action.payload] };
   /* case REMOVE_COST:
+  const newArrayOfExpenses = state.expenses.filter(expense => expense.id !== action.payload)
     return {
       ...state,
-      expenses: [...state.expenses.filter((id) => id !== action.id)],
+      expenses: [...state.expenses.filter((id) => id !== action.id)],(ou id !== action.payload) (ou expenses: newArrayOfExpenses)
     }; */
   default:
     return state;

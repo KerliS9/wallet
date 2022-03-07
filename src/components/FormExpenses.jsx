@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Button from './Button';
 import './FormExpenses.css';
-import { getCurrenciesThunk } from '../actions';
-// import { expenseControlThunk } from '../actions';
+// import { getCurrenciesThunk } from '../actions';
+import { expenseControlThunk, getCurrenciesThunk } from '../actions';
 
 const INITIAL_STATE = {
   value: '',
@@ -12,7 +11,6 @@ const INITIAL_STATE = {
   method: 'Dinheiro',
   tag: 'Alimentação',
   description: '',
-  exchangesRates: {},
 };
 
 class FormExpenses extends React.Component {
@@ -31,9 +29,10 @@ class FormExpenses extends React.Component {
     this.setState({ [name]: value });
   };
 
-  /*  handleCost = () => {
-    expenseControlThunk();
-  } */
+  handleCost = () => {
+    const { dispatch } = this.props;
+    dispatch(expenseControlThunk({ ...this.state }));
+  }
   // acessar a chave ask do moeda selecionada
   // somar todos os valores adicionados com reduce
 
@@ -48,12 +47,19 @@ class FormExpenses extends React.Component {
             id="expense"
             data-testid="value-input"
             type="number"
+            name="value"
             onChange={ this.handleChange }
           />
         </label>
         <label htmlFor="coin">
           Moeda:
-          <select id="coin" name="" type="select" data-testid="currency-input">
+          <select
+            id="coin"
+            name="currency"
+            type="select"
+            data-testid="currency-input"
+            onChange={ this.handleChange }
+          >
             {currencies.map((currency) => (
               <option key={ currency } data-testid={ currency } value={ currency }>
                 { currency }
@@ -62,20 +68,32 @@ class FormExpenses extends React.Component {
         </label>
         <label htmlFor="payment">
           Método de pagamento:
-          <select id="payment" name="" type="select" data-testid="method-input">
-            <option value="dinheiro">Dinheiro</option>
-            <option value="cartão de crédito">Cartão de crédito</option>
-            <option value="cartão de débito">Cartão de débito</option>
+          <select
+            id="payment"
+            name="method"
+            type="select"
+            data-testid="method-input"
+            onChange={ this.handleChange }
+          >
+            <option value="Dinheiro">Dinheiro</option>
+            <option value="Cartão de crédito">Cartão de crédito</option>
+            <option value="Cartão de débito">Cartão de débito</option>
           </select>
         </label>
         <label htmlFor="cr">
           Tag:
-          <select id="cr" name="" type="select" data-testid="tag-input">
-            <option value="alimentação">Alimentação</option>
-            <option value="lazer">Lazer</option>
-            <option value="trabalho">Trabalho</option>
-            <option value="transporte">Transporte</option>
-            <option value="saúde">Saúde</option>
+          <select
+            id="cr"
+            name="tag"
+            type="select"
+            data-testid="tag-input"
+            onChange={ this.handleChange }
+          >
+            <option value="Alimentação">Alimentação</option>
+            <option value="Lazer">Lazer</option>
+            <option value="Trabalho">Trabalho</option>
+            <option value="Transporte">Transporte</option>
+            <option value="Saúde">Saúde</option>
           </select>
         </label>
         <label htmlFor="description">
@@ -83,11 +101,12 @@ class FormExpenses extends React.Component {
           <input
             id="description"
             type="text"
+            name="description"
             data-testid="description-input"
             onChange={ this.handleChange }
           />
         </label>
-        <Button onClick={ this.handleCost } />
+        <button type="button" onClick={ this.handleCost }>Adicionar despesa</button>
       </div>
     );
   }

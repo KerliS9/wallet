@@ -7,16 +7,17 @@ export const EDIT_COST = 'EDIT_COST';
 
 export const userLogin = (userData) => ({ type: 'LOGIN', payload: userData });
 
-export const addCost = (value) => ({ type: 'ADD_COST', payload: value });
-export const removeCost = (value) => ({ type: 'REMOVE_COST', payload: value });
-export const editCost = (value) => ({ type: 'EDIT_COST', payload: value });
+export const addCost = (payload) => ({ type: 'ADD_COST', payload });
+export const removeCost = (payload) => ({ type: 'REMOVE_COST', payload });
+export const editCost = (payload) => ({ type: 'EDIT_COST', payload });
 
-/* export const expenseControlThunk = () => async (dispatch) => {
-  const apiResponse = await searchAPI();
-  console.log(apiResponse);
-  // const cost = dispatch(addCost());
-  // console.log(cost);
-}; */
+export const expenseControlThunk = (newExpense) => async (dispatch) => {
+  const exchangesRates = await searchAPI();
+  // console.log(exchangesRates);
+  const newObject = { ...newExpense, exchangesRates };
+  const cost = dispatch(addCost(newObject));
+  console.log(cost);
+};
 
 export const REQUEST_API = 'REQUEST_API';
 export const GET_DATA = 'GET_DATA';
