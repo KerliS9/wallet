@@ -22,15 +22,16 @@ class ExpensesTable extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {expenses.map(({ id, method, tag, description, exchangesRates }) => (
+          {expenses.map(({ id, value, method, tag, description, currency, exchangesRates }) => (
             <tr key={ id }>
               <td>{ description }</td>
               <td>{ tag }</td>
               <td>{ method }</td>
-              <td>{ exchangesRates.ask }</td>
-              <td>{ exchangesRates.code }</td>
-              <td>{ }</td>
-              <td>{ exchangesRates.codein }</td>
+              <td>{ value }</td>
+              <td>{ exchangesRates[currency].code }</td>
+              <td>{ exchangesRates[currency].name}</td>
+              <td>{ (exchangesRates[currency].ask * value).toFixed(2) }</td>
+              <td>{ exchangesRates[currency].codein }</td>
               <td>{ }</td>
             </tr>
           ))}

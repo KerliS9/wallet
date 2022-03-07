@@ -4,8 +4,22 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 class Header extends React.Component {
+/*   state = {
+    total: 0,
+  }
+
+  totalExpenses = () => {
+    const { expenses } = this.props;
+    // console.log(expenses);
+    const total = expenses.reduce((acc, { exchangesRates, currency, value }) => (
+      acc + ((exchangesRates[currency].ask) * value)));
+    this.setState({ total });
+    console.log(total);
+  }; */
+
   render() {
-    const { userEmail } = this.props;
+    const { userEmail, expenses } = this.props;
+    // const { total } = this.state;
     return (
       <div className="header">
         <h1>TRYBE</h1>
@@ -13,7 +27,11 @@ class Header extends React.Component {
           Email:
           { userEmail }
         </p>
-        <p data-testid="total-field">Despesa Total: 0</p>
+        <p data-testid="total-field">
+          Despesa Total:
+          { expenses.reduce((acc, { exchangesRates, currency, value }) => (
+            acc + ((exchangesRates[currency].ask) * value)), 0) }
+        </p>
         <p data-testid="header-currency-field">BRL</p>
       </div>
     );
@@ -22,10 +40,12 @@ class Header extends React.Component {
 
 const mapStateToProps = (state) => ({
   userEmail: state.user.email,
+  expenses: state.wallet.expenses,
 });
 
 Header.propTypes = {
   userEmail: PropTypes.string.isRequired,
+  expenses: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default connect(mapStateToProps, null)(Header);

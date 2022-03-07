@@ -14,8 +14,8 @@ export const editCost = (payload) => ({ type: 'EDIT_COST', payload });
 export const expenseControlThunk = (newExpense) => async (dispatch) => {
   const exchangesRates = await searchAPI();
   // console.log(exchangesRates);
-  const newObject = { ...newExpense, exchangesRates };
-  const cost = dispatch(addCost(newObject));
+  const newExpenseWithExchangesRates = { ...newExpense, exchangesRates };
+  const cost = dispatch(addCost(newExpenseWithExchangesRates));
   console.log(cost);
 };
 
