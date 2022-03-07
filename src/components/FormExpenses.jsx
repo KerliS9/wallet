@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './FormExpenses.css';
-// import { getCurrenciesThunk } from '../actions';
 import { expenseControlThunk, getCurrenciesThunk } from '../actions';
 
 const INITIAL_STATE = {
@@ -15,7 +14,7 @@ const INITIAL_STATE = {
 
 class FormExpenses extends React.Component {
   state = {
-    id: '',
+    id: 0,
     ...INITIAL_STATE,
   };
 
@@ -30,15 +29,22 @@ class FormExpenses extends React.Component {
   };
 
   handleCost = () => {
+    const { id } = this.state;
+    // console.log(id);
+    const ids = this.checkArrayOfExpenses(id);
+    // console.log(ids);
+    if (ids) {
+      this.setState({ id: id + 1 });
+    }
     const { dispatch } = this.props;
-    dispatch(expenseControlThunk({ ...this.state }));
+    dispatch(expenseControlThunk({ ...this.state, id }), () => {
+    });
   }
-  // acessar a chave ask do moeda selecionada
-  // somar todos os valores adicionados com reduce
+
+  checkArrayOfExpenses = (expenses) => expenses.length !== 0;
 
   render() {
     const { currencies } = this.props;
-    // console.log(currencies);
     return (
       <div className="form-expenses">
         <label htmlFor="expense">
