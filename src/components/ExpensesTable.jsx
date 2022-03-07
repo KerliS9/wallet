@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 class ExpensesTable extends React.Component {
   render() {
     const { expenses } = this.props;
-    // console.log(expenses);
     return (
       <table>
         <thead>
@@ -23,17 +22,17 @@ class ExpensesTable extends React.Component {
         </thead>
         <tbody>
           {expenses.map(({
-            id, value, method, tag, description, currency, exchangesRates,
+            id, value, method, tag, description, currency, exchangeRates,
           }) => (
             <tr key={ id }>
               <td>{ description }</td>
               <td>{ tag }</td>
               <td>{ method }</td>
               <td>{ value }</td>
-              <td>{ exchangesRates[currency].code }</td>
-              <td>{ exchangesRates[currency].name}</td>
-              <td>{ (exchangesRates[currency].ask * value).toFixed(2) }</td>
-              <td>{ exchangesRates[currency].codein }</td>
+              <td>{ exchangeRates[currency].code }</td>
+              <td>{ exchangeRates[currency].name}</td>
+              <td>{ (exchangeRates[currency].ask * value).toFixed(2) }</td>
+              <td>{ exchangeRates[currency].codein }</td>
               <td>{ }</td>
             </tr>
           ))}

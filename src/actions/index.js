@@ -12,11 +12,10 @@ export const removeCost = (payload) => ({ type: 'REMOVE_COST', payload });
 export const editCost = (payload) => ({ type: 'EDIT_COST', payload });
 
 export const expenseControlThunk = (newExpense) => async (dispatch) => {
-  const exchangesRates = await searchAPI();
-  // console.log(exchangesRates);
-  const newExpenseWithExchangesRates = { ...newExpense, exchangesRates };
-  const cost = dispatch(addCost(newExpenseWithExchangesRates));
-  console.log(cost);
+  const exchangeRates = await searchAPI();
+  // console.log(exchangeRates);
+  const newExpenseWithExchangeRates = { ...newExpense, exchangeRates };
+  dispatch(addCost(newExpenseWithExchangeRates));
 };
 
 export const REQUEST_API = 'REQUEST_API';
@@ -32,7 +31,6 @@ export const getCurrenciesThunk = () => async (dispatch) => {
   try {
     const api = await searchAPI();
     const currencies = Object.keys(api);
-    // console.log(currencies);
     return dispatch(saveCurrencies(currencies));
   } catch (error) {
     return dispatch(failedRequest(error));

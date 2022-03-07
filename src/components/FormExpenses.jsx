@@ -30,21 +30,20 @@ class FormExpenses extends React.Component {
 
   handleCost = () => {
     const { id } = this.state;
-    // console.log(id);
     const ids = this.checkArrayOfExpenses(id);
-    // console.log(ids);
     if (ids) {
       this.setState({ id: id + 1 });
     }
     const { dispatch } = this.props;
-    dispatch(expenseControlThunk({ ...this.state, id }), () => {
-    });
+    dispatch(expenseControlThunk({ ...this.state, id }));
+    this.setState({ ...INITIAL_STATE });
   }
 
   checkArrayOfExpenses = (expenses) => expenses.length !== 0;
 
   render() {
     const { currencies } = this.props;
+    const { value, currency, method, description, tag } = this.state;
     return (
       <div className="form-expenses">
         <label htmlFor="expense">
@@ -52,7 +51,7 @@ class FormExpenses extends React.Component {
           <input
             id="expense"
             data-testid="value-input"
-            type="number"
+            value={ value }
             name="value"
             onChange={ this.handleChange }
           />
@@ -65,10 +64,11 @@ class FormExpenses extends React.Component {
             type="select"
             data-testid="currency-input"
             onChange={ this.handleChange }
+            value={ currency }
           >
-            {currencies.map((currency) => (
-              <option key={ currency } data-testid={ currency } value={ currency }>
-                { currency }
+            {currencies.map((curr) => (
+              <option key={ curr } data-testid={ curr } value={ curr }>
+                { curr }
               </option>))}
           </select>
         </label>
@@ -80,6 +80,7 @@ class FormExpenses extends React.Component {
             type="select"
             data-testid="method-input"
             onChange={ this.handleChange }
+            value={ method }
           >
             <option value="Dinheiro">Dinheiro</option>
             <option value="Cartão de crédito">Cartão de crédito</option>
@@ -94,6 +95,7 @@ class FormExpenses extends React.Component {
             type="select"
             data-testid="tag-input"
             onChange={ this.handleChange }
+            value={ tag }
           >
             <option value="Alimentação">Alimentação</option>
             <option value="Lazer">Lazer</option>
@@ -110,6 +112,7 @@ class FormExpenses extends React.Component {
             name="description"
             data-testid="description-input"
             onChange={ this.handleChange }
+            value={ description }
           />
         </label>
         <button type="button" onClick={ this.handleCost }>Adicionar despesa</button>

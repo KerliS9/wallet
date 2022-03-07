@@ -11,8 +11,8 @@ class Header extends React.Component {
   totalExpenses = () => {
     const { expenses } = this.props;
     // console.log(expenses);
-    const total = expenses.reduce((acc, { exchangesRates, currency, value }) => (
-      acc + ((exchangesRates[currency].ask) * value)));
+    const total = expenses.reduce((acc, { exchangeRates, currency, value }) => (
+      acc + ((exchangeRates[currency].ask) * value)));
     this.setState({ total });
     console.log(total);
   }; */
@@ -29,8 +29,8 @@ class Header extends React.Component {
         </p>
         <p data-testid="total-field">
           Despesa Total:
-          { expenses.reduce((acc, { exchangesRates, currency, value }) => (
-            acc + ((exchangesRates[currency].ask) * value)), 0) }
+          { expenses.reduce((acc, { exchangeRates, currency, value }) => (
+            acc + ((exchangeRates[currency].ask) * value)), 0) }
         </p>
         <p data-testid="header-currency-field">BRL</p>
       </div>
