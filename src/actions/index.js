@@ -11,28 +11,29 @@ export const addCost = (value) => ({ type: 'ADD_COST', payload: value });
 export const removeCost = (value) => ({ type: 'REMOVE_COST', payload: value });
 export const editCost = (value) => ({ type: 'EDIT_COST', payload: value });
 
-export const expenseControlThunk = () => async (dispacth) => {
+/* export const expenseControlThunk = () => async (dispatch) => {
   const apiResponse = await searchAPI();
   console.log(apiResponse);
-  // const cost = dispacth(addCost());
+  // const cost = dispatch(addCost());
   // console.log(cost);
-};
+}; */
 
-/* export const REQUEST_API = 'REQUEST_API';
+export const REQUEST_API = 'REQUEST_API';
 export const GET_DATA = 'GET_DATA';
 export const FAILED_REQUEST = 'FAILED_REQUEST';
 
 export const requestAPI = () => ({ type: REQUEST_API });
-export const saveCurrencies = (code) => ({ type: GET_DATA, code });
+export const saveCurrencies = (payload) => ({ type: GET_DATA, payload });
 export const failedRequest = (error) => ({ type: FAILED_REQUEST, error });
 
-export const getCurrenciesThunk = () => async (dispacth) => {
-  dispacth(requestAPI());
+export const getCurrenciesThunk = () => async (dispatch) => {
+  dispatch(requestAPI());
   try {
-    const currencies = await searchAPI();
-    console.log(currencies);
-    return dispacth(saveCurrencies(currencies));
+    const api = await searchAPI();
+    const currencies = Object.keys(api);
+    // console.log(currencies);
+    return dispatch(saveCurrencies(currencies));
   } catch (error) {
-    return dispacth(failedRequest(error));
+    return dispatch(failedRequest(error));
   }
-}; */
+};

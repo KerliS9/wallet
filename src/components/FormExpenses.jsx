@@ -1,33 +1,30 @@
 import React from 'react';
-// import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Button from './Button';
 import './FormExpenses.css';
-import searchAPI from '../actions/requestAPI';
-import { expenseControlThunk } from '../actions';
+import { getCurrenciesThunk } from '../actions';
+// import { expenseControlThunk } from '../actions';
 
 class FormExpenses extends React.Component {
-  state = {
-    currencies: [],
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(getCurrenciesThunk());
   }
 
-  componentDidMount = async () => {
-    const api = await searchAPI();
-    const currencies = Object.keys(api);
-    // console.log(currencies);
-    this.setState({
-      currencies,
-    });
-  }
+  handleChange = ({ target }) => {
+    const { name, value } = target;
+    this.setState({ [name]: value });
+  };
 
-  handleCost = () => {
+  /*  handleCost = () => {
     expenseControlThunk();
-  }
+  } */
   // acessar a chave ask do moeda selecionada
   // somar todos os valores adicionados com reduce
 
   render() {
-    const { currencies } = this.state;
+    const { currencies } = this.props;
     // console.log(currencies);
     return (
       <div className="form-expenses">
@@ -72,12 +69,13 @@ class FormExpenses extends React.Component {
   }
 }
 
-/* const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => ({
   currencies: state.wallet.currencies,
-}); */
+});
 
-/* FormExpenses.propTypes = {
+FormExpenses.propTypes = {
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
-}; */
+  dispatch: PropTypes.func.isRequired,
+};
 
-export default FormExpenses;
+export default connect(mapStateToProps)(FormExpenses);
