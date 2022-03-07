@@ -6,7 +6,21 @@ import './FormExpenses.css';
 import { getCurrenciesThunk } from '../actions';
 // import { expenseControlThunk } from '../actions';
 
+const INITIAL_STATE = {
+  value: '',
+  currency: 'USD',
+  method: 'Dinheiro',
+  tag: 'Alimentação',
+  description: '',
+  exchangesRates: {},
+};
+
 class FormExpenses extends React.Component {
+  state = {
+    id: '',
+    ...INITIAL_STATE,
+  };
+
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(getCurrenciesThunk());
@@ -30,7 +44,12 @@ class FormExpenses extends React.Component {
       <div className="form-expenses">
         <label htmlFor="expense">
           Valor:
-          <input id="expense" data-testid="value-input" type="number" />
+          <input
+            id="expense"
+            data-testid="value-input"
+            type="number"
+            onChange={ this.handleChange }
+          />
         </label>
         <label htmlFor="coin">
           Moeda:
@@ -61,7 +80,12 @@ class FormExpenses extends React.Component {
         </label>
         <label htmlFor="description">
           Descrição:
-          <input id="description" type="text" data-testid="description-input" />
+          <input
+            id="description"
+            type="text"
+            data-testid="description-input"
+            onChange={ this.handleChange }
+          />
         </label>
         <Button onClick={ this.handleCost } />
       </div>

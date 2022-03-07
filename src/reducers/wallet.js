@@ -1,6 +1,6 @@
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
 // import { ADD_COST, REMOVE_COST, GET_DATA } from '../actions/index';
-import { REQUEST_API, GET_DATA, FAILED_REQUEST } from '../actions/index';
+import { REQUEST_API, GET_DATA, FAILED_REQUEST, ADD_COST } from '../actions/index';
 
 const INITIAL_STATE = {
   currencies: [],
@@ -16,9 +16,9 @@ function wallet(state = INITIAL_STATE, action) {
     return { ...state, currencies: action.payload };
   case FAILED_REQUEST:
     return { ...state, loading: false };
-  /* case ADD_COST:
+  case ADD_COST:
     return { ...state, expenses: action.payload };
-  case REMOVE_COST:
+  /* case REMOVE_COST:
     return {
       ...state,
       expenses: [...state.expenses.filter((id) => id !== action.id)],
