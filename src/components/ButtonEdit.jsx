@@ -5,7 +5,7 @@ import React from 'react';
 class ButtonEdit extends React.Component {
   render() {
     return (
-      <button type="button" onClick="">Editar</button>
+      <button type="button" data-testid="edit-btn"/* onClick={} */>Editar</button>
     );
   }
 }

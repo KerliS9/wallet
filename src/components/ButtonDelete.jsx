@@ -5,7 +5,7 @@ import React from 'react';
 class ButtonDelete extends React.Component {
   render() {
     return (
-      <button type="button" onClick="">Excluir</button>
+      <button type="button" data-testid="delete-btn"/* onClick={} */>Excluir</button>
     );
   }
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import ButtonEdit from './ButtonEdit';
+import ButtonDelete from './ButtonDelete';
 
 class ExpensesTable extends React.Component {
   render() {
@@ -23,19 +25,25 @@ class ExpensesTable extends React.Component {
         <tbody>
           {expenses.map(({
             id, value, method, tag, description, currency, exchangeRates,
-          }) => (
-            <tr key={ id }>
-              <td>{ description }</td>
-              <td>{ tag }</td>
-              <td>{ method }</td>
-              <td>{ value }</td>
-              <td>{ exchangeRates[currency].code }</td>
-              <td>{ exchangeRates[currency].name}</td>
-              <td>{ (exchangeRates[currency].ask * value).toFixed(2) }</td>
-              <td>{ exchangeRates[currency].codein }</td>
-              <td>{ }</td>
-            </tr>
-          ))}
+          }) => {
+            const exchange = exchangeRates[currency].ask;
+            return (
+              <tr key={ id }>
+                <td>{ description }</td>
+                <td>{ tag }</td>
+                <td>{ method }</td>
+                <td>{ (+value).toFixed(2) }</td>
+                <td>{ exchangeRates[currency].name }</td>
+                <td>{ (+exchange).toFixed(2) }</td>
+                <td>{ (exchange * +value).toFixed(2) }</td>
+                <td>Real</td>
+                <td>
+                  <ButtonEdit />
+                  <ButtonDelete />
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     );
