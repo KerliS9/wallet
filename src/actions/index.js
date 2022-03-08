@@ -9,7 +9,7 @@ export const userLogin = (userData) => ({ type: LOGIN, payload: userData });
 
 export const addCost = (payload) => ({ type: ADD_COST, payload });
 export const removeCost = (id) => ({ type: REMOVE_COST, id });
-export const editCost = (payload) => ({ type: 'EDIT_COST', payload });
+export const editCost = (id) => ({ type: EDIT_COST, id });
 
 export const expenseControlThunk = (newExpense) => async (dispatch) => {
   const exchangeRates = await searchAPI();

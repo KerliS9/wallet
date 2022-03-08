@@ -41,11 +41,24 @@ class FormExpenses extends React.Component {
 
   checkArrayOfExpenses = (expenses) => expenses.length !== 0;
 
+/*   handleEditExpense = (id) => {
+    this.setState({ isEditing: true });
+    const { dispatch } = this.props;
+    dispatch(editCost(id));
+    this.setState({ isEditing: false });
+  }; */
+
+/*   handleEditExpense = (id) => {
+    const { dispatch } = this.props;
+    dispatch(editCost(id));
+    // const indexId = expenses.find(({ id }) => id === action.id);
+  } */
+
   render() {
     const { currencies } = this.props;
-    const { value, currency, method, description, tag } = this.state;
+    const { value, currency, method, description, tag, isEditing } = this.state;
     return (
-      <div className="form-expenses">
+      <form className="form-expenses">
         <label htmlFor="expense">
           Valor:
           <input
@@ -115,14 +128,21 @@ class FormExpenses extends React.Component {
             value={ description }
           />
         </label>
-        <button type="button" onClick={ this.handleCost }>Adicionar despesa</button>
-      </div>
+        <button
+          type="button"
+          onClick={ this.handleCost }
+        >
+          { isEditing ? 'Editar despesa' : 'Adicionar despesa' }
+        </button>
+      </form>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
   currencies: state.wallet.currencies,
+  isEditing: state.wallet.isEditing,
+  expenses: state.wallet.expenses,
 });
 
 FormExpenses.propTypes = {

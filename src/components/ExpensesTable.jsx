@@ -3,9 +3,19 @@ import { connect } from 'react-redux';
 import { BsTrash } from 'react-icons/bs';
 import { AiOutlineEdit } from 'react-icons/ai';
 import PropTypes from 'prop-types';
-import { removeCost } from '../actions';
+import { removeCost, editCost } from '../actions';
 
 class ExpensesTable extends React.Component {
+  handleEditExpense = (id) => {
+    console.log('1', id);
+    const { dispatch, expenses } = this.props;
+    dispatch(editCost());
+    console.log('2', id);
+    const expenseToEdit = expenses.find((expense) => id === expense.id);
+    console.log(expenseToEdit);
+    this.setState({ ...expenseToEdit });
+  }
+
   handleRemove = (id) => {
     const { dispatch } = this.props;
     dispatch(removeCost(id));
@@ -47,6 +57,7 @@ class ExpensesTable extends React.Component {
                   <button
                     type="button"
                     data-testid="edit-btn"
+                    onClick={ () => this.handleEditExpense(id) }
                   >
                     <AiOutlineEdit />
                   </button>
