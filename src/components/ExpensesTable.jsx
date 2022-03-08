@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { BsTrash } from 'react-icons/bs';
+import { AiOutlineEdit } from 'react-icons/ai';
 import PropTypes from 'prop-types';
 import { removeCost } from '../actions';
 
@@ -46,14 +48,14 @@ class ExpensesTable extends React.Component {
                     type="button"
                     data-testid="edit-btn"
                   >
-                    Editar
+                    <AiOutlineEdit />
                   </button>
                   <button
                     type="button"
                     data-testid="delete-btn"
                     onClick={ () => this.handleRemove(id) }
                   >
-                    Excluir
+                    <BsTrash />
                   </button>
                 </td>
               </tr>
@@ -75,4 +77,3 @@ ExpensesTable.propTypes = {
 };
 
 export default connect(mapStateToProps)(ExpensesTable);
-// export default connect(mapStateToProps, mapDispatchToProps)(ExpensesTable);
