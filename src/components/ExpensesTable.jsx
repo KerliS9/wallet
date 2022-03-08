@@ -3,26 +3,10 @@ import { connect } from 'react-redux';
 import { BsTrash } from 'react-icons/bs';
 import { AiOutlineEdit } from 'react-icons/ai';
 import PropTypes from 'prop-types';
-import { removeCost, editCost } from '../actions';
 
 class ExpensesTable extends React.Component {
-  handleEditExpense = (id) => {
-    console.log('1', id);
-    const { dispatch, expenses } = this.props;
-    dispatch(editCost());
-    console.log('2', id);
-    const expenseToEdit = expenses.find((expense) => id === expense.id);
-    console.log(expenseToEdit);
-    this.setState({ ...expenseToEdit });
-  }
-
-  handleRemove = (id) => {
-    const { dispatch } = this.props;
-    dispatch(removeCost(id));
-  };
-
   render() {
-    const { expenses } = this.props;
+    const { expenses, handleRemove, handleEditExpense } = this.props;
     return (
       <table>
         <thead>
@@ -57,14 +41,14 @@ class ExpensesTable extends React.Component {
                   <button
                     type="button"
                     data-testid="edit-btn"
-                    onClick={ () => this.handleEditExpense(id) }
+                    onClick={ () => handleEditExpense(id) }
                   >
                     <AiOutlineEdit />
                   </button>
                   <button
                     type="button"
                     data-testid="delete-btn"
-                    onClick={ () => this.handleRemove(id) }
+                    onClick={ () => handleRemove(id) }
                   >
                     <BsTrash />
                   </button>
@@ -84,7 +68,8 @@ const mapStateToProps = (state) => ({
 
 ExpensesTable.propTypes = {
   expenses: PropTypes.arrayOf(PropTypes.object).isRequired,
-  dispatch: PropTypes.func.isRequired,
+  handleRemove: PropTypes.func.isRequired,
+  handleEditExpense: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps)(ExpensesTable);

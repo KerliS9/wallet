@@ -41,24 +41,11 @@ class FormExpenses extends React.Component {
 
   checkArrayOfExpenses = (expenses) => expenses.length !== 0;
 
-/*   handleEditExpense = (id) => {
-    this.setState({ isEditing: true });
-    const { dispatch } = this.props;
-    dispatch(editCost(id));
-    this.setState({ isEditing: false });
-  }; */
-
-/*   handleEditExpense = (id) => {
-    const { dispatch } = this.props;
-    dispatch(editCost(id));
-    // const indexId = expenses.find(({ id }) => id === action.id);
-  } */
-
   render() {
-    const { currencies } = this.props;
-    const { value, currency, method, description, tag, isEditing } = this.state;
+    const { currencies, isEditing, handleFormToEdit } = this.props;
+    const { value, currency, method, description, tag } = this.state;
     return (
-      <form className="form-expenses">
+      <form className="form-expenses" onSubmit={ isEditing ? handleFormToEdit : 'Adicionar despesa' }>
         <label htmlFor="expense">
           Valor:
           <input
@@ -148,6 +135,8 @@ const mapStateToProps = (state) => ({
 FormExpenses.propTypes = {
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
   dispatch: PropTypes.func.isRequired,
+  isEditing: PropTypes.bool.isRequired,
+  handleFormToEdit: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps)(FormExpenses);
