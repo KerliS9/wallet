@@ -13,7 +13,6 @@ export const editCost = (payload) => ({ type: 'EDIT_COST', payload });
 
 export const expenseControlThunk = (newExpense) => async (dispatch) => {
   const exchangeRates = await searchAPI();
-  // console.log(exchangeRates);
   const newExpenseWithExchangeRates = { ...newExpense, exchangeRates };
   dispatch(addCost(newExpenseWithExchangeRates));
 };
