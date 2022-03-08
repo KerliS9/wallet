@@ -1,11 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import ButtonEdit from './ButtonEdit';
-import ButtonDelete from './ButtonDelete';
 import { removeCost } from '../actions';
 
 class ExpensesTable extends React.Component {
+  handleRemove = (id) => {
+    const { dispatch } = this.props;
+    dispatch(removeCost(id));
+  };
+
   render() {
     const { expenses } = this.props;
     return (
@@ -39,8 +42,19 @@ class ExpensesTable extends React.Component {
                 <td>{ (exchange * +value).toFixed(2) }</td>
                 <td>Real</td>
                 <td>
-                  <ButtonEdit />
-                  <ButtonDelete />
+                  <button
+                    type="button"
+                    data-testid="edit-btn"
+                  >
+                    Editar
+                  </button>
+                  <button
+                    type="button"
+                    data-testid="delete-btn"
+                    onClick={ () => this.handleRemove(id) }
+                  >
+                    Excluir
+                  </button>
                 </td>
               </tr>
             );
@@ -55,12 +69,10 @@ const mapStateToProps = (state) => ({
   expenses: state.wallet.expenses,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  delete: (expense) => dispatch(removeCost(expense)),
-});
-
 ExpensesTable.propTypes = {
   expenses: PropTypes.arrayOf(PropTypes.object).isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ExpensesTable);
+export default connect(mapStateToProps)(ExpensesTable);
+// export default connect(mapStateToProps, mapDispatchToProps)(ExpensesTable);
