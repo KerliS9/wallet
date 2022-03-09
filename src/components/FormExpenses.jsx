@@ -2,53 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './FormExpenses.css';
-// import { expenseControlThunk, getCurrenciesThunk } from '../actions';
-
-/* const INITIAL_STATE = {
-  value: '',
-  currency: 'USD',
-  method: 'Dinheiro',
-  tag: 'Alimentação',
-  description: '',
-}; */
 
 class FormExpenses extends React.Component {
-  /* state = {
-    id: 0,
-    ...INITIAL_STATE,
-  };
-
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(getCurrenciesThunk());
-  }
-
-  handleChange = ({ target }) => {
-    const { name, value } = target;
-    this.setState({ [name]: value });
-  };
-
-  handleCost = () => {
-    const { id } = this.state;
-    const ids = this.checkArrayOfExpenses(id);
-    if (ids) {
-      this.setState({ id: id + 1 });
-    }
-    const { dispatch } = this.props;
-    dispatch(expenseControlThunk({ ...this.state, id }));
-    this.setState({ ...INITIAL_STATE });
-  }
-
-  checkArrayOfExpenses = (expenses) => expenses.length !== 0; */
-
   render() {
-    const { currencies, isEditing, handleFormToEdit, handleChange, handleCost,
+    const { currencies, isEditing, handleChange, handleCost,
       value, currency, method, description, tag, handleNormalExpense } = this.props;
     return (
-      <form
-        className="form-expenses"
-        onSubmit={ isEditing ? handleFormToEdit : handleNormalExpense }
-      >
+      <form className="form-expenses">
         <label htmlFor="expense">
           Valor:
           <input
@@ -120,7 +80,7 @@ class FormExpenses extends React.Component {
         </label>
         <button
           type="button"
-          onClick={ handleCost }
+          onClick={ isEditing ? handleNormalExpense : handleCost }
         >
           { isEditing ? 'Editar despesa' : 'Adicionar despesa' }
         </button>
@@ -132,16 +92,13 @@ class FormExpenses extends React.Component {
 const mapStateToProps = (state) => ({
   currencies: state.wallet.currencies,
   isEditing: state.wallet.isEditing,
-  // expenses: state.wallet.expenses,
 });
 
 FormExpenses.propTypes = {
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
-  // dispatch: PropTypes.func.isRequired,
   isEditing: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleCost: PropTypes.func.isRequired,
-  handleFormToEdit: PropTypes.func.isRequired,
   handleNormalExpense: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
   currency: PropTypes.string.isRequired,

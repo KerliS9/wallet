@@ -1,6 +1,5 @@
-// Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
 import { REQUEST_API, GET_DATA, FAILED_REQUEST,
-  ADD_COST, REMOVE_COST, EDIT_COST, SAVE_EDIT_COST, NOT_EDIT } from '../actions/index';
+  ADD_COST, REMOVE_COST, EDIT_COST, SAVE_EDIT_COST } from '../actions/index';
 
 const INITIAL_STATE = {
   currencies: [],
@@ -29,16 +28,10 @@ function wallet(state = INITIAL_STATE, action) {
     return {
       ...state,
       isEditing: false,
-      /*  expenses: state.expenses.map((id, index) => (
-        index === indexId ? { ...id, ...action.id } : id)) }; */
       expenses: state.expenses.map((expense) => (
         expense.id === action.id ? { ...expense, ...action.id } : expense
       )),
     };
-    /* expenses: { ...state.expenses, [action.id]: action.payload },
-    }; */
-  case NOT_EDIT:
-    return { ...state, isEditing: false };
   default:
     return state;
   }

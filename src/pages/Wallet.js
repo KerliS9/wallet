@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import FormExpenses from '../components/FormExpenses';
 import ExpensesTable from '../components/ExpensesTable';
-import { editCost, removeCost, saveEditCost, notEdit,
+import { editCost, removeCost, saveEditCost,
   expenseControlThunk, getCurrenciesThunk } from '../actions';
 
 const INITIAL_STATE = {
@@ -53,25 +53,14 @@ class Wallet extends React.Component {
     const { dispatch, expenses } = this.props;
     dispatch(editCost());
     const expenseToEdit = expenses.find((expense) => id === expense.id);
-    console.log(expenseToEdit);
-    dispatch(removeCost(id));
     this.setState({ ...expenseToEdit });
-  }
-
-  handleFormToEdit = () => {
-    const expense = this.handleEditExpense();
-    if (expense.length >= 1) {
-      this.setState({ ...expense });
-    }
   }
 
   handleNormalExpense = (e) => {
     e.preventDefault();
-    console.log('id');
     const { dispatch } = this.props;
     dispatch(saveEditCost());
     this.setState({ ...INITIAL_STATE });
-    dispatch(notEdit());
   }
 
   render() {
@@ -82,7 +71,6 @@ class Wallet extends React.Component {
           { ...this.state }
           handleChange={ this.handleChange }
           handleCost={ this.handleCost }
-          handleFormToEdit={ this.handleFormToEdit }
           handleNormalExpense={ this.handleNormalExpense }
         />
         <ExpensesTable
