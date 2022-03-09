@@ -59,7 +59,8 @@ class Wallet extends React.Component {
   handleNormalExpense = (e) => {
     e.preventDefault();
     const { dispatch } = this.props;
-    dispatch(saveEditCost());
+    dispatch(saveEditCost(this.state));
+    console.log('test', this.state);
     this.setState({ ...INITIAL_STATE });
   }
 
