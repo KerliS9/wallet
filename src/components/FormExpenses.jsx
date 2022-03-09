@@ -2,18 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './FormExpenses.css';
-import { expenseControlThunk, getCurrenciesThunk } from '../actions';
+// import { expenseControlThunk, getCurrenciesThunk } from '../actions';
 
-const INITIAL_STATE = {
+/* const INITIAL_STATE = {
   value: '',
   currency: 'USD',
   method: 'Dinheiro',
   tag: 'Alimentação',
   description: '',
-};
+}; */
 
 class FormExpenses extends React.Component {
-  state = {
+  /* state = {
     id: 0,
     ...INITIAL_STATE,
   };
@@ -39,13 +39,16 @@ class FormExpenses extends React.Component {
     this.setState({ ...INITIAL_STATE });
   }
 
-  checkArrayOfExpenses = (expenses) => expenses.length !== 0;
+  checkArrayOfExpenses = (expenses) => expenses.length !== 0; */
 
   render() {
-    const { currencies, isEditing, handleFormToEdit } = this.props;
-    const { value, currency, method, description, tag } = this.state;
+    const { currencies, isEditing, handleFormToEdit, handleChange, handleCost,
+      value, currency, method, description, tag, handleNormalExpense } = this.props;
     return (
-      <form className="form-expenses" onSubmit={ isEditing ? handleFormToEdit : 'Adicionar despesa' }>
+      <form
+        className="form-expenses"
+        onSubmit={ isEditing ? handleFormToEdit : handleNormalExpense }
+      >
         <label htmlFor="expense">
           Valor:
           <input
@@ -53,7 +56,7 @@ class FormExpenses extends React.Component {
             data-testid="value-input"
             value={ value }
             name="value"
-            onChange={ this.handleChange }
+            onChange={ handleChange }
           />
         </label>
         <label htmlFor="coin">
@@ -63,7 +66,7 @@ class FormExpenses extends React.Component {
             name="currency"
             type="select"
             data-testid="currency-input"
-            onChange={ this.handleChange }
+            onChange={ handleChange }
             value={ currency }
           >
             {currencies.map((curr) => (
@@ -79,7 +82,7 @@ class FormExpenses extends React.Component {
             name="method"
             type="select"
             data-testid="method-input"
-            onChange={ this.handleChange }
+            onChange={ handleChange }
             value={ method }
           >
             <option value="Dinheiro">Dinheiro</option>
@@ -94,7 +97,7 @@ class FormExpenses extends React.Component {
             name="tag"
             type="select"
             data-testid="tag-input"
-            onChange={ this.handleChange }
+            onChange={ handleChange }
             value={ tag }
           >
             <option value="Alimentação">Alimentação</option>
@@ -111,13 +114,13 @@ class FormExpenses extends React.Component {
             type="text"
             name="description"
             data-testid="description-input"
-            onChange={ this.handleChange }
+            onChange={ handleChange }
             value={ description }
           />
         </label>
         <button
           type="button"
-          onClick={ this.handleCost }
+          onClick={ handleCost }
         >
           { isEditing ? 'Editar despesa' : 'Adicionar despesa' }
         </button>
@@ -129,14 +132,22 @@ class FormExpenses extends React.Component {
 const mapStateToProps = (state) => ({
   currencies: state.wallet.currencies,
   isEditing: state.wallet.isEditing,
-  expenses: state.wallet.expenses,
+  // expenses: state.wallet.expenses,
 });
 
 FormExpenses.propTypes = {
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
-  dispatch: PropTypes.func.isRequired,
+  // dispatch: PropTypes.func.isRequired,
   isEditing: PropTypes.bool.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleCost: PropTypes.func.isRequired,
   handleFormToEdit: PropTypes.func.isRequired,
+  handleNormalExpense: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+  currency: PropTypes.string.isRequired,
+  method: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  tag: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps)(FormExpenses);

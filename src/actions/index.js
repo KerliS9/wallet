@@ -4,12 +4,16 @@ export const LOGIN = 'LOGIN';
 export const ADD_COST = 'ADD_COST';
 export const REMOVE_COST = 'REMOVE_COST';
 export const EDIT_COST = 'EDIT_COST';
+export const SAVE_EDIT_COST = 'SAVE_EDIT_COST';
+export const NOT_EDIT = 'NOT_EDIT';
 
 export const userLogin = (userData) => ({ type: LOGIN, payload: userData });
 
 export const addCost = (payload) => ({ type: ADD_COST, payload });
 export const removeCost = (id) => ({ type: REMOVE_COST, id });
 export const editCost = (id) => ({ type: EDIT_COST, id });
+export const saveEditCost = (id) => ({ type: SAVE_EDIT_COST, id });
+export const notEdit = () => ({ type: NOT_EDIT });
 
 export const expenseControlThunk = (newExpense) => async (dispatch) => {
   const exchangeRates = await searchAPI();
