@@ -15,7 +15,7 @@ class Header extends React.Component {
     const { userEmail } = this.props;
     return (
       <div className="header">
-        <h1>TRYBE</h1>
+        <h1>TRYBE WALLET</h1>
         <p data-testid="email-field">
           Email:
           { userEmail }

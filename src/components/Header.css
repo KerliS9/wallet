@@ -1,5 +1,7 @@
 .header {
   align-items: baseline;
+  background-color: rgb(31, 119, 36);
   display: flex;
+  font-size: 20px;
   justify-content: space-around;
 }

@@ -1,0 +1,12 @@
+.headTable {
+  background-color: rgb(42, 156, 42);
+  border: 1px solid black;
+  font-size: 20px;
+  width: 200px;
+}
+
+.bodyTable {
+  background-color: rgb(88, 151, 88);
+  font-size: 20px;
+  width: 200px;
+}

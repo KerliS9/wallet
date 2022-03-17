@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import { BsTrash } from 'react-icons/bs';
 import { AiOutlineEdit } from 'react-icons/ai';
 import PropTypes from 'prop-types';
+import './ExpensesTable.css';
 
 class ExpensesTable extends React.Component {
   render() {
     const { expenses, handleRemove, handleEditExpense } = this.props;
     return (
       <table>
-        <thead>
+        <thead className="headTable">
           <tr>
             <th>Descrição</th>
             <th>Tag</th>
@@ -22,7 +23,7 @@ class ExpensesTable extends React.Component {
             <th>Editar/Excluir</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="bodyTable">
           {expenses.map(({
             id, value, method, tag, description, currency, exchangeRates,
           }) => {

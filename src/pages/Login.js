@@ -37,7 +37,7 @@ class Login extends React.Component {
     const { connectAccount, history } = this.props;
     return (
       <div className="content">
-        <h1>TRYBE</h1>
+        <h1>TRYBE WALLET</h1>
         <form className="form-login">
           <input
             className="input"
@@ -61,6 +61,7 @@ class Login extends React.Component {
           />
           <button
             type="button"
+            className="button"
             onClick={ () => {
               connectAccount(email);
               history.push('/carteira');

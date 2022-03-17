@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import FormExpenses from '../components/FormExpenses';
 import ExpensesTable from '../components/ExpensesTable';
+import './Wallet.css';
 import { editCost, removeCost, saveEditCost,
   expenseControlThunk, getCurrenciesThunk } from '../actions';
 
@@ -65,7 +66,7 @@ class Wallet extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="body">
         <Header />
         <FormExpenses
           { ...this.state }

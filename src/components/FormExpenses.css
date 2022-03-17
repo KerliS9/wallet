@@ -1,7 +1,14 @@
 .form-expenses {
   align-items: baseline;
+  background-color: rgb(22, 90, 25);
   display: flex;
   flex-wrap: wrap;
+  font-size: 20px;
   justify-content: space-around;
   margin: 10px;
+}
+
+.input {
+  font-size: 20px;
+  width: 200px;
 }

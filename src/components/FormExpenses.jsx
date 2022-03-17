@@ -12,6 +12,7 @@ class FormExpenses extends React.Component {
         <label htmlFor="expense">
           Valor:
           <input
+            className="input"
             id="expense"
             data-testid="value-input"
             value={ value }
@@ -22,6 +23,7 @@ class FormExpenses extends React.Component {
         <label htmlFor="coin">
           Moeda:
           <select
+            className="input"
             id="coin"
             name="currency"
             type="select"
@@ -38,6 +40,7 @@ class FormExpenses extends React.Component {
         <label htmlFor="payment">
           Método de pagamento:
           <select
+            className="input"
             id="payment"
             name="method"
             type="select"
@@ -45,14 +48,15 @@ class FormExpenses extends React.Component {
             onChange={ handleChange }
             value={ method }
           >
-            <option value="Dinheiro">Dinheiro</option>
-            <option value="Cartão de crédito">Cartão de crédito</option>
-            <option value="Cartão de débito">Cartão de débito</option>
+            <option value="Dinheiro" className="input">Dinheiro</option>
+            <option value="Cartão de crédito" className="input">Cartão de crédito</option>
+            <option value="Cartão de débito" className="input">Cartão de débito</option>
           </select>
         </label>
         <label htmlFor="cr">
           Tag:
           <select
+            className="input"
             id="cr"
             name="tag"
             type="select"
@@ -60,16 +64,17 @@ class FormExpenses extends React.Component {
             onChange={ handleChange }
             value={ tag }
           >
-            <option value="Alimentação">Alimentação</option>
-            <option value="Lazer">Lazer</option>
-            <option value="Trabalho">Trabalho</option>
-            <option value="Transporte">Transporte</option>
-            <option value="Saúde">Saúde</option>
+            <option value="Alimentação" className="input">Alimentação</option>
+            <option value="Lazer" className="input">Lazer</option>
+            <option value="Trabalho" className="input">Trabalho</option>
+            <option value="Transporte" className="input">Transporte</option>
+            <option value="Saúde" className="input">Saúde</option>
           </select>
         </label>
         <label htmlFor="description">
           Descrição:
           <input
+            className="input"
             id="description"
             type="text"
             name="description"
@@ -79,6 +84,7 @@ class FormExpenses extends React.Component {
           />
         </label>
         <button
+          className="input"
           type="button"
           onClick={ isEditing ? handleExpenseEdited : handleNormalExpense }
         >
