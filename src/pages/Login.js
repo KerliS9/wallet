@@ -82,8 +82,10 @@ Login.propTypes = {
   }).isRequired,
 };
 
-const mapDispatchToProps = (dispacth) => ({
-  connectAccount: (state) => dispacth(userLogin(state)),
+const mapDispatchToProps = (dispatch) => ({
+  connectAccount: (state) => dispatch(userLogin(state)),
 });
 
 export default connect(null, mapDispatchToProps)(Login);
+
+// https://www.codegrepper.com/code-examples/javascript/javascript+email+match+validation

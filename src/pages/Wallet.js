@@ -31,7 +31,7 @@ class Wallet extends React.Component {
     this.setState({ [name]: value });
   };
 
-  handleCost = () => {
+  handleNormalExpense = () => {
     const { id } = this.state;
     const ids = this.checkArrayOfExpenses(id);
     if (ids) {
@@ -56,11 +56,10 @@ class Wallet extends React.Component {
     this.setState({ ...expenseToEdit });
   }
 
-  handleNormalExpense = (e) => {
+  handleExpenseEdited = (e) => {
     e.preventDefault();
     const { dispatch } = this.props;
     dispatch(saveEditCost(this.state));
-    console.log('test', this.state);
     this.setState({ ...INITIAL_STATE });
   }
 
@@ -71,8 +70,8 @@ class Wallet extends React.Component {
         <FormExpenses
           { ...this.state }
           handleChange={ this.handleChange }
-          handleCost={ this.handleCost }
           handleNormalExpense={ this.handleNormalExpense }
+          handleExpenseEdited={ this.handleExpenseEdited }
         />
         <ExpensesTable
           handleRemove={ this.handleRemove }

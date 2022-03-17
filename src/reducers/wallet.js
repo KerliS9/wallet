@@ -29,8 +29,7 @@ function wallet(state = INITIAL_STATE, action) {
       ...state,
       isEditing: false,
       expenses: state.expenses.map((expense) => (
-        expense.id === action.id ? { ...expense, ...action.id } : expense
-      )),
+        expense.id === action.payload.id ? { ...expense, ...action.payload } : expense)),
     };
   default:
     return state;
@@ -38,3 +37,5 @@ function wallet(state = INITIAL_STATE, action) {
 }
 
 export default wallet;
+
+// https://stackoverflow.com/questions/35628774/how-to-update-single-value-inside-specific-array-item-in-redux

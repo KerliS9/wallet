@@ -5,8 +5,8 @@ import './FormExpenses.css';
 
 class FormExpenses extends React.Component {
   render() {
-    const { currencies, isEditing, handleChange, handleCost,
-      value, currency, method, description, tag, handleNormalExpense } = this.props;
+    const { currencies, isEditing, handleChange, handleNormalExpense,
+      value, currency, method, description, tag, handleExpenseEdited } = this.props;
     return (
       <form className="form-expenses">
         <label htmlFor="expense">
@@ -80,7 +80,7 @@ class FormExpenses extends React.Component {
         </label>
         <button
           type="button"
-          onClick={ isEditing ? handleNormalExpense : handleCost }
+          onClick={ isEditing ? handleExpenseEdited : handleNormalExpense }
         >
           { isEditing ? 'Editar despesa' : 'Adicionar despesa' }
         </button>
@@ -98,8 +98,8 @@ FormExpenses.propTypes = {
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
   isEditing: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
-  handleCost: PropTypes.func.isRequired,
   handleNormalExpense: PropTypes.func.isRequired,
+  handleExpenseEdited: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
   currency: PropTypes.string.isRequired,
   method: PropTypes.string.isRequired,

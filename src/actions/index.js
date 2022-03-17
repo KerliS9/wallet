@@ -11,7 +11,7 @@ export const userLogin = (userData) => ({ type: LOGIN, payload: userData });
 export const addCost = (payload) => ({ type: ADD_COST, payload });
 export const removeCost = (id) => ({ type: REMOVE_COST, id });
 export const editCost = (id) => ({ type: EDIT_COST, id });
-export const saveEditCost = (id) => ({ type: SAVE_EDIT_COST, id });
+export const saveEditCost = (payload) => ({ type: SAVE_EDIT_COST, payload });
 
 export const expenseControlThunk = (newExpense) => async (dispatch) => {
   const exchangeRates = await searchAPI();
