@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .content {
   align-items: center;
   background-color: rgb(31, 119, 36);
@@ -5,12 +10,11 @@
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  font-size: 50px;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 10px;
+  font-size: 5vh;
+  justify-content: space-around;
+  height: 100vmax;
+  width: 100vmax;
 }
-
 
 .form-login {
   align-items: center;
@@ -21,16 +25,24 @@
 .input {
   border: 1px solid black;
   border-radius: 8px;
-  font-size: 50px;
-  font-weight: 450;
+  font-size: 2vh;
   margin: 10px;
-  width: 800px;
+  padding: 10px;
+  width: 200px;
 }
 
 .button {
   background-color: rgb(84, 87, 86);
   border: 1px solid black;
   border-radius: 8px;
-  font-size: 40px;
-  width: 800px;
+  font-size: 2vh;
+  width: 200px;
+
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  outline: none;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
 }
