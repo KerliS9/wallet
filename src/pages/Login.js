@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import './Login.css';
+// import './Login.css';
 import { userLogin } from '../actions';
 
 class Login extends React.Component {
@@ -36,11 +36,11 @@ class Login extends React.Component {
     const { email, password, disabled } = this.state;
     const { connectAccount, history } = this.props;
     return (
-      <div className="content">
+      <div class="flex flex-col">
         <h1>TRYBE WALLET</h1>
-        <form className="form-login">
+        <form>
           <input
-            className="input"
+            class="form-input px-4 py-3 rounded-full"
             data-testid="email-input"
             type="email"
             name="email"
@@ -50,7 +50,7 @@ class Login extends React.Component {
             required
           />
           <input
-            className="input"
+            class="form-input"
             data-testid="password-input"
             type="password"
             name="password"
