@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './Login.css';
 import { userLogin } from '../actions';
+import carteiraMarrom from '../images/carteiraMarromSemFundo.png';
 
 class Login extends React.Component {
   state = {
@@ -37,28 +38,37 @@ class Login extends React.Component {
     const { connectAccount, history } = this.props;
     return (
       <div className="content">
-        <h1>TRYBE WALLET</h1>
+        <h1 className="title">TRYBE WALLET</h1>
+        <div className="divImage">
+          <img width="500vh" src={ carteiraMarrom } alt="Carteira com dinheiro"/>
+        </div>
         <form className="form-login">
-          <input
-            className="input"
-            data-testid="email-input"
-            type="email"
-            name="email"
-            placeholder="Digite seu email"
-            value={ email }
-            onChange={ this.handleChange }
-            required
-          />
-          <input
-            className="input"
-            data-testid="password-input"
-            type="password"
-            name="password"
-            placeholder="Digite sua senha"
-            value={ password }
-            onChange={ this.handleChange }
-            required
-          />
+          <label htmlFor="email" className="labelInput">
+            <input
+              className="input"
+              data-testid="email-input"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Digite seu email"
+              value={ email }
+              onChange={ this.handleChange }
+              required
+              />
+          </label>
+          <label htmlFor="password" className="labelInput">
+            <input
+              className="input"
+              data-testid="password-input"
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Digite sua senha"
+              value={ password }
+              onChange={ this.handleChange }
+              required
+              />
+          </label>
           <button
             type="button"
             className="button"

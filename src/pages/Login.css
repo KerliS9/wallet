@@ -1,36 +1,71 @@
-.content {
-  align-items: center;
-  background-color: rgb(31, 119, 36);
-  border: 4px solid black;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  font-size: 50px;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 10px;
+* {
+  margin: 0;
+  padding: 0;
 }
 
+.content {
+  align-items: center;
+  background-color: #48C260;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100vmax;
+  width: 100vmax;
+}
+.title {
+  font-size: 80px;
+}
+
+.divImage {
+  width: 500px;
+  height: 500px;
+}
 
 .form-login {
   align-items: center;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  width: 500px;
+  height: 200px;
+}
+
+.labelInput {
+  margin: 1px;
+  padding: 1px;
 }
 
 .input {
   border: 1px solid black;
+  background-color: #5AF578;
   border-radius: 8px;
-  font-size: 50px;
-  font-weight: 450;
-  margin: 10px;
-  width: 800px;
+  font-size: 2vh;
+  padding: 20px;
+}
+
+.input:focus {
+  outline: 2px solid black;
 }
 
 .button {
   background-color: rgb(84, 87, 86);
   border: 1px solid black;
   border-radius: 8px;
-  font-size: 40px;
-  width: 800px;
+  font-size: 2vh;
+  width: 200px;
+
+  color: gray;
+  cursor: pointer;
+  outline: none;
+  padding: 15px;
+  text-align: center;
+}
+
+.button:disabled {
+  background-color: #A5F7B5;
+}
+
+.button:enabled {
+  background-color: #5AF578;
+  color:black;
 }
