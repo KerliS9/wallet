@@ -1,14 +1,35 @@
-.form-expenses {
-  align-items: baseline;
-  background-color: rgb(22, 90, 25);
-  display: flex;
-  flex-wrap: wrap;
-  font-size: 20px;
-  justify-content: space-around;
-  margin: 10px;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.input {
-  font-size: 20px;
+.form-expenses {
+  align-items: baseline;
+  background-color: #48C260;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 2vh;
+  justify-content: space-around;
+  border: 1px solid black;
+}
+
+.inputTable {
+  font-size: 1.5vh;
+  width: 100px;
+  margin: 2px;
+  padding: 2px;
+  background-color:#5AF578;
+  border-radius: 8px;
+}
+
+.inputTable:focus {
+  outline: 2px solid black;
+}
+
+.buttonTable {
+  background-color: #21C25F;
+  border: 1px solid black;
+  border-radius: 8px;
+  font-size: 2vh;
   width: 200px;
 }

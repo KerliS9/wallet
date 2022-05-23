@@ -7,17 +7,6 @@
   align-items: center;
   background-color: #48C260;
   display: flex;
-  font-size: 15px;
+  font-size: 20px;
   justify-content: space-around;
-}
-
-.carteira {
-  align-items: center;
-  display:flex;
-  justify-content: space-between;
-}
-
-.email-total {
-  align-items: center;
-  display:flex;
 }

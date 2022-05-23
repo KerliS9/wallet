@@ -16,11 +16,8 @@ class Header extends React.Component {
     const { userEmail } = this.props;
     return (
       <div className="header">
-        <div className="carteira">
           <img width="50px" src={ CarteiraMarrom } alt="Carteira com dinheiro"/>
-          <h1>TRYBE WALLET</h1>
-        </div>
-        <div className="email-total">
+          <h2>TRYBE WALLET</h2>        
           <p data-testid="email-field">
             Email:
             { userEmail }
@@ -30,7 +27,6 @@ class Header extends React.Component {
             { this.totalExpenses() }
           </p>
           <p data-testid="header-currency-field">BRL</p>
-        </div>
       </div>
     );
   }
