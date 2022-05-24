@@ -10,3 +10,6 @@
   font-size: 20px;
   justify-content: space-around;
 }
+.totalExpenses {
+  font-weight: bold;
+}
