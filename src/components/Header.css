@@ -1,6 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .header {
-  align-items: baseline;
-  background-color: rgb(31, 119, 36);
+  align-items: center;
+  background-color: #48C260;
   display: flex;
   font-size: 20px;
   justify-content: space-around;

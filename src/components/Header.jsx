@@ -2,6 +2,7 @@ import React from 'react';
 import './Header.css';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import CarteiraMarrom from '../images/carteiraMarromSemFundo.png'
 
 class Header extends React.Component {
   totalExpenses = () => {
@@ -15,16 +16,17 @@ class Header extends React.Component {
     const { userEmail } = this.props;
     return (
       <div className="header">
-        <h1>TRYBE WALLET</h1>
-        <p data-testid="email-field">
-          Email:
-          { userEmail }
-        </p>
-        <p data-testid="total-field">
-          Despesa Total:
-          { this.totalExpenses() }
-        </p>
-        <p data-testid="header-currency-field">BRL</p>
+          <img width="50px" src={ CarteiraMarrom } alt="Carteira com dinheiro"/>
+          <h2>TRYBE WALLET</h2>        
+          <p data-testid="email-field">
+            Email:
+            { userEmail }
+          </p>
+          <p data-testid="total-field">
+            Despesa Total:
+            { this.totalExpenses() }
+          </p>
+          <p data-testid="header-currency-field">BRL</p>
       </div>
     );
   }
