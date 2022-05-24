@@ -1,12 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.table {
+	display:flex;
+	align-items:center;
+  width: 100%;
+  flex-direction: column;
+  border-collapse: collapse;
+  margin: 0.5em;
+}
+
 .headTable {
-  background-color: rgb(42, 156, 42);
-  border: 1px solid black;
-  font-size: 20px;
-  width: 200px;
+  display:flex;
+	width:100%;
+	background:#23AD3E;
+  padding: 0.5em;
 }
 
 .bodyTable {
-  background-color: rgb(88, 151, 88);
-  font-size: 20px;
+  display:flex;
+	width:100%;
+}
+
+.header_item, .table_data {
   width: 200px;
+	text-align:center;
+  border: 1px solid black;
+  font-size: 2vh;
+  border-bottom: solid 1px #2C5C36
+}
+
+.table_button {
+  width: 45px;
+  height: 45px;
+  background-color:#23AD3E;
+  cursor: pointer;
 }

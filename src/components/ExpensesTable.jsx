@@ -9,18 +9,18 @@ class ExpensesTable extends React.Component {
   render() {
     const { expenses, handleRemove, handleEditExpense } = this.props;
     return (
-      <table>
+      <table className="table">
         <thead className="headTable">
           <tr>
-            <th>Descrição</th>
-            <th>Tag</th>
-            <th>Método de pagamento</th>
-            <th>Valor</th>
-            <th>Moeda</th>
-            <th>Câmbio utilizado</th>
-            <th>Valor convertido</th>
-            <th>Moeda de conversão</th>
-            <th>Editar/Excluir</th>
+            <th className="header_item">Descrição</th>
+            <th className="header_item">Tag</th>
+            <th className="header_item">Método de pagamento</th>
+            <th className="header_item">Valor</th>
+            <th className="header_item">Moeda</th>
+            <th className="header_item">Câmbio utilizado</th>
+            <th className="header_item">Valor convertido</th>
+            <th className="header_item">Moeda de conversão</th>
+            <th className="header_item">Editar/Excluir</th>
           </tr>
         </thead>
         <tbody className="bodyTable">
@@ -30,27 +30,29 @@ class ExpensesTable extends React.Component {
             const exchange = exchangeRates[currency].ask;
             return (
               <tr key={ id }>
-                <td>{ description }</td>
-                <td>{ tag }</td>
-                <td>{ method }</td>
-                <td>{ (+value).toFixed(2) }</td>
-                <td>{ exchangeRates[currency].name }</td>
-                <td>{ (+exchange).toFixed(2) }</td>
-                <td>{ (exchange * +value).toFixed(2) }</td>
-                <td>Real</td>
-                <td>
+                <td className="table_data">{ description }</td>
+                <td className="table_data">{ tag }</td>
+                <td className="table_data">{ method }</td>
+                <td className="table_data">{ (+value).toFixed(2) }</td>
+                <td className="table_data">{ exchangeRates[currency].name }</td>
+                <td className="table_data">{ (+exchange).toFixed(2) }</td>
+                <td className="table_data">{ (exchange * +value).toFixed(2) }</td>
+                <td className="table_data">Real</td>
+                <td className="table_data">
                   <button
+                    className="table_button"
                     type="button"
                     data-testid="edit-btn"
                     onClick={ () => handleEditExpense(id) }
-                  >
+                    >
                     <AiOutlineEdit />
                   </button>
                   <button
+                    className="table_button"
                     type="button"
                     data-testid="delete-btn"
                     onClick={ () => handleRemove(id) }
-                  >
+                    >
                     <BsTrash />
                   </button>
                 </td>
