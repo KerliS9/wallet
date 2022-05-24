@@ -22,6 +22,7 @@
 .bodyTable {
   display:flex;
 	width:100%;
+  flex-direction: column;
 }
 
 .header_item, .table_data {
@@ -29,7 +30,8 @@
 	text-align:center;
   border: 1px solid black;
   font-size: 2vh;
-  border-bottom: solid 1px #2C5C36
+  border-bottom: solid 1px #2C5C36;
+  padding: 5px;
 }
 
 .table_button {
@@ -37,4 +39,13 @@
   height: 45px;
   background-color:#23AD3E;
   cursor: pointer;
+}
+
+tr:nth-child(even) {
+  background-color: gray;
+}
+
+tr:hover {
+  background-color: white;
+  color:black;
 }
